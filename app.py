@@ -3,7 +3,6 @@ import numpy as np
 import pandas as pd
 from sklearn.cluster import KMeans
 import streamlit as st
-
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import MinMaxScaler
@@ -71,7 +70,13 @@ def main() :
 
             st.subheader('WCSS를 위한 클러스터링 갯수를 선택')
 
-            max_number = st.slider('최대 그룹 선택', 2, 20, value=10)
+            if X_new.shape[0] < 10 :
+                default_value = X_new.shape[0]
+
+            else :
+                default_value = 10
+
+            max_number = st.slider('최대 그룹 선택', 2, 20, value=default_value)
             wcss = []
             for k in np.arange(1, max_number+1) :
                 kmeans = KMeans(n_clusters= k, random_state=5)
