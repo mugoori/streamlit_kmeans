@@ -10,7 +10,7 @@ from sklearn.preprocessing import MinMaxScaler
 
 
 def main() :
-    st.title('K-Means 클러스터링')
+    st.title('K-Means 클러스터링 앱')
 
     # 1. csv 파일을 업로드 할수 있다.
     file = st.file_uploader('CSV파일 업로드', type=['csv'])
@@ -21,7 +21,7 @@ def main() :
         st.dataframe( df )
         # 결측값 처리한다.
         df.dropna(inplace=True)
-        
+
         column_list = df.columns
         selected_columns = st.multiselect('X로 사용할 컬럼을 선택하세요', column_list)
 
