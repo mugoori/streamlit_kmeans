@@ -18,8 +18,9 @@ def main() :
         # csv 파일은, 판다스로 읽어서 화면에 보여준다.
         df = pd.read_csv(file)
         st.dataframe( df )
+
         # 결측값 처리한다.
-        df.dropna(inplace=True)
+        df = df.dropna()
 
         column_list = df.columns
         selected_columns = st.multiselect('X로 사용할 컬럼을 선택하세요', column_list)
@@ -35,7 +36,7 @@ def main() :
                 print(name)    
                 # 각 컬럼 데이터를 가져온다.
                 data = X[name]
-                data.reset_index(inplace=True, drop=True)
+                data.reset_index(inplace=True, drop=True)  
                 
                 # 문자열인지 아닌지 나눠서 처리하면 된다. 
                 if data.dtype == object :
@@ -72,7 +73,6 @@ def main() :
 
             if X_new.shape[0] < 10 :
                 default_value = X_new.shape[0]
-
             else :
                 default_value = 10
 
