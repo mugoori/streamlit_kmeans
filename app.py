@@ -19,6 +19,9 @@ def main() :
         # csv 파일은, 판다스로 읽어서 화면에 보여준다.
         df = pd.read_csv(file)
         st.dataframe( df )
+        # 결측값 처리한다.
+        df.dropna(inplace=True)
+        
         column_list = df.columns
         selected_columns = st.multiselect('X로 사용할 컬럼을 선택하세요', column_list)
 
